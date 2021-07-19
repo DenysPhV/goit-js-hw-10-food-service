@@ -1,5 +1,5 @@
 // ====== create cards =============
-import menuFoodsTpl from '../template/card-food.hbs';
+import menuFoodsTpl from './template/card-food.hbs';
 import menuFoods from './menu.json';
 
 const menuContainer = document.querySelector('.js-menu');
