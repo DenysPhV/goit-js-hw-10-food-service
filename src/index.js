@@ -10,7 +10,8 @@ menuContainer.innerHTML = cardsMarkup;
 function createFoodCardsMarkup(menuFoods) {
   return menuFoods.map(menuFoodsTpl).join('');
 }
-// ==============================================
+
+// ================ switch theme ==============================
 
 const Theme = {
   LIGHT: 'light-theme',
