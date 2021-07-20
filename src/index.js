@@ -22,20 +22,23 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
-switchControl.addEventListener('click', () => {
-  if (localStorage.getItem('theme') === Theme.DARK) {
-    localStorage.removeItem('theme');
-  } else {
+function onChangeTheme() {
+  if (switchControl.checked) {
     localStorage.setItem('theme', Theme.DARK);
+  } else {
+    localStorage.setItem('theme', Theme.LIGHT);
   }
   addDarkClassToBody();
-});
+}
 
 function addDarkClassToBody() {
   if (localStorage.getItem('theme') === Theme.DARK) {
     bodyRef.classList.add(Theme.DARK);
+    switchControl.checked = 'true';
   } else {
     bodyRef.classList.remove(Theme.DARK);
   }
 }
+
+switchControl.addEventListener('click', onChangeTheme);
 addDarkClassToBody();
