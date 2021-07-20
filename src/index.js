@@ -32,12 +32,10 @@ switchControl.addEventListener('click', () => {
 });
 
 function addDarkClassToBody() {
-  try {
-    if (localStorage.getItem('theme') === Theme.DARK) {
-      bodyRef.classList.add(Theme.DARK);
-    } else {
-      bodyRef.classList.remove(Theme.DARK);
-    }
-  } catch (err) {}
+  if (localStorage.getItem('theme') === Theme.DARK) {
+    bodyRef.classList.add(Theme.DARK);
+  } else {
+    bodyRef.classList.remove(Theme.DARK);
+  }
 }
 addDarkClassToBody();
