@@ -12,10 +12,32 @@ function createFoodCardsMarkup(menuFoods) {
 }
 
 // ================ switch theme ==============================
+const switchControl = document.querySelector('.theme-switch__toggle');
+// console.log(switchControl);
+const bodyRef = document.querySelector('body');
+// console.log(bodyRef);
 
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-localStorage.setItem('Theme', JSON.stringify(Theme));
+switchControl.addEventListener('click', () => {
+  if (localStorage.getItem('theme') === Theme.DARK) {
+    localStorage.removeItem('theme');
+  } else {
+    localStorage.setItem('theme', Theme.DARK);
+  }
+  addDarkClassToBody();
+});
+
+function addDarkClassToBody() {
+  try {
+    if (localStorage.getItem('theme') === Theme.DARK) {
+      bodyRef.classList.add(Theme.DARK);
+    } else {
+      bodyRef.classList.remove(Theme.DARK);
+    }
+  } catch (err) {}
+}
+addDarkClassToBody();
