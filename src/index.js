@@ -13,9 +13,7 @@ function createFoodCardsMarkup(menuFoods) {
 
 // ================ switch theme ==============================
 const switchControl = document.querySelector('.theme-switch__toggle');
-// console.log(switchControl);
 const bodyRef = document.querySelector('body');
-// console.log(bodyRef);
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -24,21 +22,24 @@ const Theme = {
 
 function onChangeTheme() {
   if (switchControl.checked) {
+    changeClassToBody('dark-theme', 'light-theme');
     localStorage.setItem('theme', Theme.DARK);
   } else {
+    changeClassToBody('light-theme', 'dark-theme');
     localStorage.setItem('theme', Theme.LIGHT);
   }
-  addDarkClassToBody();
+  fixedDarkThemeToBody();
 }
 
-function addDarkClassToBody() {
+function fixedDarkThemeToBody() {
   if (localStorage.getItem('theme') === Theme.DARK) {
-    bodyRef.classList.add(Theme.DARK);
     switchControl.checked = 'true';
-  } else {
-    bodyRef.classList.remove(Theme.DARK);
   }
+}
+
+function changeClassToBody(add, remove) {
+  bodyRef.classList.add(add);
+  bodyRef.classList.remove(remove);
 }
 
 switchControl.addEventListener('click', onChangeTheme);
-addDarkClassToBody();
