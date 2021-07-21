@@ -28,13 +28,15 @@ function onChangeTheme() {
     changeClassToBody('light-theme', 'dark-theme');
     localStorage.setItem('theme', Theme.LIGHT);
   }
-  fixedDarkThemeToBody();
 }
 
 function fixedDarkThemeToBody() {
   if (localStorage.getItem('theme') === Theme.DARK) {
     switchControl.checked = 'true';
+  } else {
+    localStorage.getItem('theme') !== Theme.DARK;
   }
+  onChangeTheme();
 }
 
 function changeClassToBody(add, remove) {
@@ -43,3 +45,4 @@ function changeClassToBody(add, remove) {
 }
 
 switchControl.addEventListener('click', onChangeTheme);
+fixedDarkThemeToBody();
