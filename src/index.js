@@ -12,37 +12,12 @@ function createFoodCardsMarkup(menuFoods) {
 }
 
 // ================ switch theme ==============================
-const switchControl = document.querySelector('.theme-switch__toggle');
-const bodyRef = document.querySelector('body');
 
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-function onChangeTheme() {
-  if (switchControl.checked) {
-    changeClassToBody('dark-theme', 'light-theme');
-    localStorage.setItem('theme', Theme.DARK);
-  } else {
-    changeClassToBody('light-theme', 'dark-theme');
-    localStorage.setItem('theme', Theme.LIGHT);
-  }
-}
-
-function fixedDarkThemeToBody() {
-  if (localStorage.getItem('theme') === Theme.DARK) {
-    switchControl.checked = 'true';
-  } else {
-    localStorage.getItem('theme') !== Theme.DARK;
-  }
-  onChangeTheme();
-}
-
-function changeClassToBody(add, remove) {
-  bodyRef.classList.add(add);
-  bodyRef.classList.remove(remove);
-}
-
-switchControl.addEventListener('click', onChangeTheme);
-fixedDarkThemeToBody();
+localStorage.setItem('Theme', JSON.stringify(Theme));
+//повесиьь слушателя на переклучатель чтбо он добавлял темы в локал сторедж
+//и добавить стили при работе с переключателем на стили
